@@ -1,11 +1,12 @@
 class Solution {
 public:
     void sortColors(vector<int>& v) {
-        for(int i = 0; i < v.size(); i++){
-            for(int j = i + 1; j < v.size(); j++){
-                if(v[j] < v[i]){
-                     swap(v[i], v[j]);
-                }
+        int freq[3] = {0};
+        for(int i = 0; i < v.size(); i++) freq[v[i]]++;
+        int idx = 0;
+        for(int i = 0; i <= 2; i++){
+            while(freq[i]--){
+                v[idx++] = i;
             }
         }
     }
